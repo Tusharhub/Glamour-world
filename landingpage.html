@@ -230,19 +230,86 @@
                 </div>
             </div>
         </header>
+        <style>
+            .video-container {
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%;
+
+                /* 16:9 aspect ratio (height: 9/16 * width) */
+                overflow: hidden;
+            }
+
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+            }
+
+
+            @media (max-width: 767px) {
+                .video-container {
+                    display: block;
+                    /* Show the video container on mobile */
+                }
+            }
+
+            @media (min-width: 768px) {
+                .video-container {
+                    display: none;
+                    /* Hide the video container on desktop */
+                }
+            }
+        </style>
+        <script>
+            function togglePlay() {
+                var video = document.getElementById('videoPlayer');
+                var playButton = document.querySelector('.play-button');
+
+                if (video.paused) {
+                    video.play();
+                    playButton.style.display = 'none'; // Hide the play button when the video starts playing
+                } else {
+                    video.pause();
+                    playButton.style.display = 'block'; // Show the play button when the video is paused
+                }
+            }
+
+        </script>
 
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
         <section id="hero" class="hero-wrap style7 hero-bg-13 bg-f">
             <img src="assets/img/hero/hero-shape-6.png" alt="Image" class="hero-shape-one">
             <div class="container">
+                <div class="video-container">
+                    <iframe id="videoPlayer" src="https://www.youtube.com/embed/XK_5oSXXGMU" frameborder="0"
+                        allowfullscreen></iframe>
+                    <!-- Play Button (optional) -->
+                    <div class="play-button" onclick="togglePlay()">
+                        <i class="fa fa-play"></i>
+                    </div>
+                </div>
                 <div class="row gx-5 align-items-end">
+
+
+
                     <div class="col-lg-6">
                         <div class="hero-content" data-speed="0.10" data-revert="true">
                             <span>Welcome To Glamour World Laser Hair and Skin Clinic</span>
                             <h1>Look Good, Feel Good with our Hair Patches, starting at just ₹4,999/-</h1>
 
                             <div class="hero-btn">
-                                <a href="#appointment" class="btn style2">Get a Free Consultation</a>
+                                <a href="tel:7678693254" class="btn style2">Get a Free Consultation</a>
                             </div>
                         </div>
                     </div>
@@ -250,7 +317,7 @@
                     <div class="col-lg-6">
                         <div class="book-appointment style2"
                             style="background-color: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 10px;">
-                            <h5>Book A Free Counseling Session</h5>
+                            <h5>Book An Online Appointment</h5>
                             <form id="enquiry-form" style="max-width: 100%;">
                                 <!-- Input Fields -->
                                 <div class="row">
@@ -276,7 +343,8 @@
                                 <!-- Submit Button -->
                                 <div class="col-12">
                                     <button type="submit" class="btn style2"
-                                        style="width: 100%; padding: 10px; border-radius: 5px;">Get Free Consultation</button>
+                                        style="width: 100%; padding: 10px; border-radius: 5px;">Book An
+                                        Appointment</button>
                                 </div>
                             </form>
 
@@ -1297,8 +1365,8 @@
                                     </li>
                                     <li>
                                         <i class="flaticon-email"></i>
-                                        <a href="mailto:info@Glamourworldclinic.com"><span class="__cf_email__"
-                                                data-cfemail="b6dfd8d0d9f6d2c3d5de98d5d9db">info@Glamourworldclinic.com</span></a>
+                                        <a href="mailto:info@glamourworldcllinic.com"><span class="__cf_email__"
+                                                data-cfemail="b6dfd8d0d9f6d2c3d5de98d5d9db">info@glamourworldcllinic.com</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -1348,31 +1416,32 @@
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <p class="copyright-text"><i class="ri-copyright-line"></i><span>2024</span>. All Rights
-                                    Reserved By <a href="https://hibootstrap.com/"
-                                        target="_blank">Glamourworldclinic.com</a></p>
+                                    Reserved By <a href="https://glamourworldcllinic.com/"
+                                        target="_blank">glamourworldcllinic.com</a></p>
                             </div>
                             <div class="col-md-6 text-md-end">
                                 <div class="social-link">
                                     <h6>Follow Us On: </h6>
                                     <ul class="social-profile list-style style1">
                                         <li>
-                                            <a target="_blank" href="https://facebook.com/">
+                                            <a target="_blank"
+                                                href="https://www.facebook.com/Glamourworldlaserhairskinclinic">
                                                 <i class="ri-facebook-line"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://twitter.com/">
-                                                <i class="ri-twitter-line"></i>
+                                                <i class="ri-whatsapp-line"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://linkedin.com/">
+                                            <a target="_blank" href="https://www.instagram.com/glamourworldclinic/">
                                                 <i class="ri-instagram-line"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a target="_blank" href="https://pinterest.com/">
-                                                <i class="ri-linkedin-line"></i>
+                                                <i class="ri-youtube-line"></i>
                                             </a>
                                         </li>
                                     </ul>
