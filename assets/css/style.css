@@ -1938,7 +1938,7 @@ select {
 }
 .header-wrap.style1 .header-top,
 .header-wrap.style2 .header-top {
-  background: #002856;
+  background: #a11309;
 }
 .header-wrap.style1 .header-top .header-top-left .contact-info li a,
 .header-wrap.style1 .header-top .header-top-left .contact-info li p,
@@ -1948,7 +1948,7 @@ select {
 }
 .header-wrap.style1 .header-top .header-top-right .social-profile li a,
 .header-wrap.style2 .header-top .header-top-right .social-profile li a {
-  background: #002856;
+  background: #032552;
 }
 .header-wrap.style1 .header-top .header-top-right .social-profile li a i,
 .header-wrap.style2 .header-top .header-top-right .social-profile li a i {
@@ -2882,19 +2882,19 @@ select {
   color: #ff375f;
 }
 .hero-bg-1 {
-  background-image: url(../img/hero/hero-slider-1.jpg);
+  background-image: url(../img/hero/1.png);
 }
 .hero-bg-2 {
-  background-image: url(../img/hero/hero-slider-2.jpg);
+  background-image: url(../img/hero/2.png);
 }
 .hero-bg-3 {
-  background-image: url(../img/hero/hero-slider-3.jpg);
+  background-image: url(../img/hero/3.png);
 }
 .hero-bg-4 {
-  background-image: url(../img/hero/hero-slider-4.jpg);
+  background-image: url(../img/hero/4.png);
 }
 .hero-bg-5 {
-  background-image: url(../img/hero/hero-slider-5.jpg);
+  background-image: url(../img/hero/5.png);
 }
 .hero-bg-6 {
   background-image: url(../img/hero/hero-slider-6.jpg);
