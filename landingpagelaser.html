@@ -344,19 +344,19 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input id="name" type="text" placeholder="Full Name"
+                                            <input id="name" name="name" type="text" placeholder="Full Name"
                                                 style="width: 100%; padding: 10px; border-radius: 5px;">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input id="phone" type="tel" placeholder="Phone Number"
+                                            <input id="phone" name="phone" type="tel" placeholder="Phone Number"
                                                 style="width: 100%; padding: 10px; border-radius: 5px;">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <textarea id="message" placeholder="Message"
+                                            <textarea id="message" name="message" placeholder="Message"
                                                 style="width: 100%; padding: 10px; border-radius: 5px;"></textarea>
                                         </div>
                                     </div>
@@ -1467,10 +1467,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyHxUugwM9Ch_tMBtsAavFM_hzYb2khSr8gWs2GENpAza7WZzTJitSPxJ6exbKO023qkA/exec'; // Replace with your Google Apps Script Web App URL
+    
         function validatePhoneNumber() {
-            var phoneInput = document.getElementById('phone');
-            var phone = phoneInput.value;
-
+            const phoneInput = document.getElementById('phone');
+            const phone = phoneInput.value;
+    
             if (phone.length !== 10 || !/^[0-9]+$/.test(phone)) {
                 Swal.fire({
                     icon: 'error',
@@ -1479,49 +1481,45 @@
                 });
                 return false;
             }
-
+    
             return true;
         }
-
-        function sendEmail() {
-            var name = document.getElementById('name').value;
-            var phone = document.getElementById('phone').value;
-            var message = document.getElementById('message').value;
-
-            var emailBody = "Name: " + name + "<br>" +
-                "Phone: " + phone + "<br>" +
-                "Message: " + message;
-
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "iamhacker.bae.89@gmail.com",
-                Password: "79AD528B591933C1079ECE61A6AD782DAD44",
-                To: 'glamourworldlaserskinclinic@gmail.com',
-                From: "Landing Page - Contact Form Enquiry <iamhacker.bae.89@gmail.com>",
-                Subject: "Landing Page Contact Form Enquiry",
-                Body: emailBody
-            }).then(function (response) {
-                if (response === "OK") {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Thank You',
-                        text: 'Hi there, One of our executives will get in touch with you within 24 hours.'
-                    });
-                } else {
+    
+        function sendToGoogleSheet() {
+            const form = document.forms['enquiry-form'];
+    
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.result === 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thank You',
+                            text: 'Hi there, One of our executives will get in touch with you within 24 hours.'
+                        });
+                        form.reset(); // Clear the form
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Failed to send data. Please try again.'
+                        });
+                    }
+                })
+                .catch(error => {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Failed to send email. Please try again.'
+                        text: 'Failed to send data. Please try again.'
                     });
-                }
-            });
+                });
         }
-
+    
         document.getElementById('enquiry-form').addEventListener('submit', function (e) {
             e.preventDefault(); // Prevent form submission
-
+    
             if (validatePhoneNumber()) {
-                sendEmail();
+                sendToGoogleSheet();
             }
         });
     </script>
